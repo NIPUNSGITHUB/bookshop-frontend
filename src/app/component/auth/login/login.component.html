@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-left">
+    <h1>SignIn</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="d-flex align-items-center">
+            <div class="col-lg-6">
+                <img src="https://img.icons8.com/bubbles/2x/user-male.png" alt="" srcset="">
+            </div>
+            <div class="col-lg-8">
+                <form [formGroup]="loginForm" (ngSubmit)="userSignIn()">
+                    <div class="form-group">
+                        <input type="text" formControlName="email" class="form-control form-control-sm"
+                            placeholder="Email" [(ngModel)]="user.email">  
+                        <small class="error-message">{{emailErr}}</small> 
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" formControlName="password" class="form-control form-control-sm"
+                            name="pwd" id="pwd" [(ngModel)]="user.password" placeholder="Password">
+                    </div>
+                    <button [ngClass]="{'btn-outline-success': loginForm.valid == true}"  [disabled]="!loginForm.valid"
+                        type="submit" class="btn btn-light btn-block">
+                        SignIn 
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+<table class="table table-striped table-inverse table-responsive-sm table-responsive-md">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of user.userList; let i = index">
+            <td>{{(i+1)}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.isAdmin == 1 ? 'Admin' : 'Author'}}</td>
+            <td>
+                <div *ngIf="user.isActive == 1; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock> <span class="badge badge-success">Active</span>
+                </ng-template>
+                <ng-template #elseBlock> <span class="badge badge-danger">Inactive</span>
+                </ng-template>
+            </td>
+            <td class="d-flex justify-content-center">
+                <button type="button" class="btn btn-warning btn-sm" (click)="onChange(user.id,user.isActive)">Change</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
